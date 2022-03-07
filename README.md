@@ -8,4 +8,5 @@ The used font was Smooch Sans, downloadable from this link https://fonts.google.
 
 # Data source
 Gyms in Rostock: https://www.opendata-hro.de/dataset/fitnessstudios
+
 Streets: https://www.opendata-hro.de/dataset/adressenliste
