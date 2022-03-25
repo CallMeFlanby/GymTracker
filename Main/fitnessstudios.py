@@ -1,18 +1,37 @@
 from _ast import If
 import json
 
-
-f = open('fitnessstudios.json')
-
-# returns JSON object as
-# a dictionary
-data = json.load(f)
+# Opening JSON file
+with open('fitnessstudios.json') as json_file:
+    data = json.load(json_file)
 
 # Iterating through the json
 # list
 # TODO: UTF-8?
-for i in data['features']:
-    print(i)
+for currentData in data['features']:
 
-# Closing file
-f.close()
+    # Gets the properties.
+    props = currentData['properties']
+
+    # Gets the gyms name.
+    gymsName = props['bezeichnung']
+
+    # Street name, house number, postcode, part of the city, city
+    streets = props['strasse_name']
+    houseNo = props['hausnummer']
+    houseNoExtra = props['hausnummer_zusatz']
+    postCode = props['postleitzahl']
+    town = props['gemeindeteil_name']
+    city = props['gemeinde_name']
+
+    # Returns the opening hours.
+    openingHours = props['oeffnungszeiten']
+
+    # Contact possibilities
+    telephone = props['telefon_festnetz']
+    mobile = props['telefon_mobil']
+    mail = props['email']
+    website = props['website']
+
+    coordinates = currentData['geometry']['coordinates']
+
