@@ -24,6 +24,8 @@ for currentData in data['features']:
     town = props['gemeindeteil_name']
     city = props['gemeinde_name']
 
+    print(postCode)
+
     # Returns the opening hours.
     openingHours = props['oeffnungszeiten']
 
