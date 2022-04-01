@@ -6,7 +6,7 @@ addresses = Addresses.get()
 class Search:
 
     # Searches a keyword and compares it with the post code, street, city and part of the city.
-    def search_address(string):
+    def search_address(self, string):
 
         for x in addresses:
             if string.isdigit:
