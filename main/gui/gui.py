@@ -16,7 +16,7 @@ class App(tk.Tk):
     def __init__(self):
         super().__init__()
 
-        self.geometry("450x400")
+        self.geometry("450x450")
         self.title('GymTracker')
         self.resizable()
 
