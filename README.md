@@ -4,6 +4,12 @@ School project
 # Logo
 ![alt text](https://github.com/CallMeFlanby/GymTracker/blob/main/documentation/GymTracker%20logo.png?raw=true)
 
+Main colours:
+- #DA2235 (medium candy apple red)
+- #182235 (oxford blue)
+- #FFDD97 (navajo white)
+- #00DD97 (medium aquarine)
+
 Copyright:
 - World: <a href="https://www.vecteezy.com/free-vector/world">World Vectors by Vecteezy</a>
 - Deadlift: <a href="https://www.vecteezy.com/free-vector/gym">Gym Vectors by Vecteezy</a>
