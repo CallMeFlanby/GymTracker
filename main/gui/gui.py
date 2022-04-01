@@ -18,7 +18,7 @@ class App(tk.Tk):
 
         self.geometry("450x200")
         self.title('GymTracker')
-        self.resizable(0, 0)
+        self.resizable(1, 0)
 
         #configure grid
         #self.columnconfigure(0)
