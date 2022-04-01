@@ -16,9 +16,9 @@ class App(tk.Tk):
     def __init__(self):
         super().__init__()
 
-        self.geometry("450x200")
+        self.geometry("450x400")
         self.title('GymTracker')
-        self.resizable(1, 0)
+        self.resizable()
 
         #configure grid
         #self.columnconfigure(0)
@@ -49,6 +49,13 @@ class App(tk.Tk):
 
         house_no_entry = ttk.Entry(self)
         house_no_entry.grid(column=4, row=0, sticky=tk.E, padx=5, pady=5)
+
+        #postleitzahl
+        postcode_label = ttk.Label(self, text="Postleitzahl:")
+        postcode_label.grid(column=0, row=2, sticky=tk.W, padx=5, pady=5)
+
+        postcode_entry = ttk.Entry(self)
+        postcode_entry.grid(column=1, row=2, sticky=tk.E, pady=5, padx=5)
 
         # submit bzw suche
         search_button = ttk.Button(self, text="Suche")
