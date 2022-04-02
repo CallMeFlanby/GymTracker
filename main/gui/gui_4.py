@@ -1,3 +1,4 @@
+import logging
 import os
 from pathlib import Path
 
@@ -21,10 +22,47 @@ def action_get_info_dialog(self):
     messagebox.showinfo(message=m_text, title="Infos")
 
 
+def search(frame, search_field):
+
+    # Cleans the frame before population it again.
+    for widget in frame.winfo_children():
+        widget.destroy()
+
+    searched = search_field.get()
+    found_addresses = Search.search_addresses(searched)
+
+    listbox = Listbox(frame)
+    listbox.grid(column=0, row=0, columnspan=3, rowspan=1)
+
+    scrollbar = Scrollbar(frame)
+    scrollbar.grid(column=4, row=0, columnspan=1, rowspan=1, sticky=tk.NS)
+
+    # Insert elements into the listbox.
+    for values in found_addresses:
+        listbox.insert(END, values)
+
+    listbox.config(yscrollcommand=scrollbar.set)
+    scrollbar.config(command=listbox.yview)
+
+    """""
+    x_row = 1
+    for x in found_addresses:
+        found_label = ttk.Label(frame, text=x)
+        found_label.grid(column=0, row=x_row, sticky=tk.W, columnspan=1, rowspan=1)
+
+        x_row = x_row + 1
+        sep = ttk.Separator(frame, orient='horizontal')
+        sep.grid(column=0, row=x_row, columnspan=1, rowspan=1)
+        x_row = x_row + 1
+    """
+    frame.grid(column=0, row=1, columnspan=5, rowspan=1, padx=5, pady=5, sticky='news')
+
+
 class Window(tk.Tk):
     def __init__(self):
 
         # Shows splash screen? Not sure :(
+        logging.info("Starting splash screen.")
         splash_screen
         super().__init__()
 
@@ -40,10 +78,10 @@ class Window(tk.Tk):
         screen_width = self.winfo_screenwidth()
         screen_height = self.winfo_screenheight()
 
-        x_cordinate = int((screen_width / 2) - (window_width / 2))
-        y_cordinate = int((screen_height / 2) - (window_height / 2))
+        x_coordinate = int((screen_width / 2) - (window_width / 2))
+        y_coordinate = int((screen_height / 2) - (window_height / 2))
 
-        self.geometry("{}x{}+{}+{}".format(window_width, window_height, x_cordinate, y_cordinate))
+        self.geometry("{}x{}+{}+{}".format(window_width, window_height, x_coordinate, y_coordinate))
 
         self.create_widget()
 
@@ -59,58 +97,21 @@ class Window(tk.Tk):
 
     def create_widget(self):
 
-        # Straße
         search_label = ttk.Label(self, text="Suche:")
-        search_label.grid(column=0, row=0, columnspan=1, rowspan=1)
-
+        search_label.grid(column=0, row=0, columnspan=1, rowspan=1, sticky=tk.EW)
         search_field = ttk.Entry(self)
-        search_field.grid(column=1, row=0, columnspan=1, rowspan=1)
+        search_field.grid(column=1, row=0, columnspan=1, rowspan=1, sticky=tk.EW)
 
         frame = ttk.Frame(self)
 
-        def search():
-
-            # Cleans the frame before population it again.
-            for widget in frame.winfo_children():
-                widget.destroy()
-
-            searched = search_field.get()
-            found_addresses = Search.search_addresses(searched)
-
-            listbox = Listbox(frame)
-            listbox.grid(column=0, row=0, columnspan=3, rowspan=1)
-
-            scrollbar = Scrollbar(frame)
-            scrollbar.grid(column=4, row=0, columnspan=1, rowspan=1)
-
-            # Insert elements into the listbox.
-            for values in found_addresses:
-                listbox.insert(END, values)
-
-            listbox.config(yscrollcommand=scrollbar.set)
-            scrollbar.config(command=listbox.yview)
-
-            """""
-            x_row = 1
-            for x in found_addresses:
-                found_label = ttk.Label(frame, text=x)
-                found_label.grid(column=0, row=x_row, sticky=tk.W, columnspan=1, rowspan=1)
-
-                x_row = x_row + 1
-                sep = ttk.Separator(frame, orient='horizontal')
-                sep.grid(column=0, row=x_row, columnspan=1, rowspan=1)
-                x_row = x_row + 1
-            """
-            frame.grid(column=0, row=1, columnspan=3, rowspan=1)
-
-        search()
-        search_button = ttk.Button(self, text="Suchen", command=search)
+        search(frame, search_field)
+        search_button = ttk.Button(self, text="Suchen", command=search(frame, search_field))
         search_button.grid(column=2, row=0, columnspan=1, rowspan=1)
 
         # Key listener addition.
         def on_press(key):
             if key is keyboard.Key.enter:
-                search()
+                search(frame, search_field)
 
         def on_release(key):
             return

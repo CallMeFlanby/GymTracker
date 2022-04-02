@@ -1,4 +1,5 @@
 import json
+import logging
 import os
 from pathlib import Path
 
@@ -6,7 +7,8 @@ from main.address.address import Address
 from main.gym.gym import Gym
 from main.utils.contact import Contact
 
-
+#TODO Need to know how to correct log.
+log = logging.getLogger(__name__)
 class Gyms:
 
     @staticmethod
@@ -20,6 +22,7 @@ class Gyms:
         # Opening JSON file
         with open(file, mode="r", encoding="utf-8") as json_file:
             data = json.load(json_file)
+            log.info("Reading json file.")
 
             # Iterating through the json list
             for currentData in data['features']:
@@ -55,4 +58,5 @@ class Gyms:
 
                 gyms.append(Gym(name, gym_address, gym_contact, opening_hours, coordinates))
 
+        log.info("Returning list with collected gyms. Total: " + str(len(gyms)) + ".")
         return gyms
