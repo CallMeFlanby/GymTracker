@@ -6,5 +6,5 @@ class Gym:
         self.name = name
         self.address = address
         self.contact = contact
-        self.openingHours = opening_hours
+        self.opening_hours = opening_hours
         self.coordinates = coordinates

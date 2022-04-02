@@ -17,10 +17,10 @@ class Address:
         self.town_part = town_part
 
     def get_address(self):
-        address = self.street + " " + str(self.number) + "\n"
+        address = self.street + " " + str(self.number) + " \n "
         if self.extra:
-            address = address + str(self.extra) + "\n"
-        address = address + str(self.post_code) + " " + self.city + "\n"
+            address = address + str(self.extra) + " \n "
+        address = address + str(self.post_code) + " " + self.city + " \n "
         return address + "OT " + self.town_part
 
     def get_searched_address(self):
