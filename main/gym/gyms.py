@@ -60,3 +60,18 @@ class Gyms:
 
         log.info("Returning list with collected gyms. Total: " + str(len(gyms)) + ".")
         return gyms
+
+    @staticmethod
+    def get_near_gyms(address):
+        gyms = Gyms.get()
+
+        nearby_gyms = list()
+        for x in gyms:
+            if x.address.post_code is address.post_code:
+                nearby_gyms.append(x)
+            if x.address.street is address.street:
+                nearby_gyms.append(x)
+
+        if len(nearby_gyms) is 0:
+            #TODO
+        return nearby_gyms
