@@ -51,4 +51,7 @@ class GymTab():
         Label(current_tab, text="Koordinaten:").grid(row=index, column=0, sticky=tkinter.E)
         Label(current_tab, text=gym.coordinates).grid(row=index, column=1, sticky=tkinter.W)
 
+        current_tab.grid_columnconfigure(0, weight=1)
+        current_tab.grid_columnconfigure(1, weight=1)
+
         return current_tab

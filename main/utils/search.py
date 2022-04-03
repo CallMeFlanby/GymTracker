@@ -25,7 +25,7 @@ class Search:
         if not string:
             log.error("Empty string.")
             s = "No corresponding address."
-            address_list[s] = Address("No corresponding address.", 0, "", 00000, "No City", "")
+            address_list[s] = Address.empty_address()
             return address_list
 
         log.info("Checking if " + string + " is found.")
@@ -44,7 +44,7 @@ class Search:
         if not address_list:
             log.info("No address was found.")
             s = "No corresponding address."
-            address_list[s] = Address("No corresponding address.", 0, "", 00000, "No City", "")
+            address_list[s] = Address.empty_address()
 
         log.info("Found " + str(len(address_list)) + " possible addresses.")
 
@@ -56,6 +56,10 @@ class Search:
         gyms = Gyms.get()
 
         nearby_gyms = list()
+
+        if address.street == Address.empty_address().street:
+            return nearby_gyms
+
         for x in gyms:
             if x.address.post_code == address.post_code:
                 nearby_gyms.append(x)

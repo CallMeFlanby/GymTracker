@@ -27,18 +27,16 @@ def action_get_info_dialog(self):
 def update_gym_notebook(frame, nearby_gyms):
     notebook = Notebook(frame)
 
-    try:
-        iterator = iter(nearby_gyms)
+    if nearby_gyms:
         for gym in nearby_gyms:
             if gym == Gym.no_gym_found():
                 Label(notebook, text="Kein Fitness Studio gefunden, das tut uns leid. :(").grid(row=0, column=0)
                 break
             current_tab = GymTab.create_gym_tab(gym, notebook)
-            notebook.add(current_tab, text=gym.name)
-    except TypeError:
+            notebook.add(current_tab, text=gym.short_name)
+    else:
         logging.info("No address was selected.")
-        Label(notebook, text="Bitte eine Adresse eingeben.").grid(row=0, column=0)
-
+        Label(notebook, text="Bitte eine Adresse eingeben.").grid(row=0, column=0, columnspan=3, sticky=NSEW)
     notebook.grid(column=0, row=0, sticky=tk.NSEW)
 
 

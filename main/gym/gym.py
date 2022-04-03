@@ -8,6 +8,7 @@ class Gym:
         self.contact = contact
         self.opening_hours = opening_hours
         self.coordinates = coordinates
+        self.short_name = name.split(" ")[0]
 
     @staticmethod
     def no_gym_found():

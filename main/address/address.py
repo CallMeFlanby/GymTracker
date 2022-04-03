@@ -26,3 +26,7 @@ class Address:
     def get_searched_address(self):
         city = self.city.split(",")[0]
         return self.street + ", " + city
+
+    @staticmethod
+    def empty_address():
+        return Address("No corresponding address.", 0, "", 00000, "No City", "")
