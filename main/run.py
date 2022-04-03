@@ -124,7 +124,7 @@ class Window(tk.Tk):
         super().__init__()
 
         path = Path(os.getcwd())
-        icon = os.path.join(path.parent.absolute().parent.absolute(), 'documentation', 'GymTracker_logo.ico')
+        icon = os.path.join(path.parent.absolute(), 'documentation', 'GymTracker_logo.ico')
         self.iconbitmap(icon)
         self.title('GymTracker')
         self.resizable()

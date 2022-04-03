@@ -17,7 +17,7 @@ class Gyms:
 
         # Gets the file from the right directory, in this case var.
         path = Path(os.getcwd())
-        file = os.path.join(path.parent.absolute().parent.absolute(), 'var', 'fitnessstudios.json')
+        file = os.path.join(path.parent.absolute(), 'var', 'fitnessstudios.json')
 
         # Opening JSON file
         with open(file, mode="r", encoding="utf-8") as json_file:

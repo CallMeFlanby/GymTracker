@@ -14,7 +14,7 @@ panel.geometry('%dx%d+%d+%d' % (width * 0.8, height * 0.8, width * 0.1, height *
 
 # Loads the logo.
 path = Path(os.getcwd())
-image_file = os.path.join(path.parent.absolute().parent.absolute(), 'documentation', 'GymTracker_logo.png')
+image_file = os.path.join(path.parent.absolute(), 'documentation', 'GymTracker_logo.png')
 
 # Centers the image.
 image = tk.PhotoImage(file=image_file)

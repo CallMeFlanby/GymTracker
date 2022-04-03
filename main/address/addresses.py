@@ -19,7 +19,7 @@ class Addresses:
 
         # Gets the file from the right directory, in this case var.
         path = Path(os.getcwd())
-        file = os.path.join(path.parent.absolute().parent.absolute(), 'var', 'adressenliste.json')
+        file = os.path.join(path.parent.absolute(), 'var', 'adressenliste.json')
 
         with open(file, mode="r", encoding="utf-8") as json_file:
             # returns JSON object as
