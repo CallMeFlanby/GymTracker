@@ -1,6 +1,5 @@
 import unittest
 
-from main.address.address import Address
 from main.utils.contact import Contact
 
 

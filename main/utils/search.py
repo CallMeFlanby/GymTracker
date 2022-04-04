@@ -3,7 +3,6 @@ from collections import OrderedDict
 
 from main.address.address import Address
 from main.address.addresses import Addresses
-
 # Load all available addresses.
 from main.gym.gym import Gym
 from main.gym.gyms import Gyms

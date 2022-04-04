@@ -1,6 +1,5 @@
 import unittest
 
-from main.address.addresses import Addresses
 from main.gym.gyms import Gyms
 
 

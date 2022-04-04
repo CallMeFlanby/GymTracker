@@ -1,27 +1,16 @@
 import logging
 import os
+import tkinter as tk
 from pathlib import Path
+from tkinter import *
+from tkinter import ttk
 from tkinter.ttk import Notebook
 
-from main.gui import splash_screen
+import pynput as pynput
+
 from main.gui.gym_tab import GymTab
 from main.gym.gym import Gym
 from main.utils.search import Search
-
-from tkinter import *
-import tkinter as tk
-from tkinter import messagebox, ttk
-
-from pynput import keyboard
-
-
-def action_get_info_dialog(self):
-    m_text = "\
-******************************************\n\
- Autor: Tino Joseph, Flavio Marta\n\
- Date: 31.03.2022\n\
-******************************************"
-    messagebox.showinfo(message=m_text, title="Infos")
 
 
 def update_gym_notebook(frame, nearby_gyms):
@@ -68,7 +57,7 @@ def create_frames(root):
     gym_listbox_frame.grid_columnconfigure(0, weight=1)
 
     search_button = ttk.Button(search_frame, text="Suchen")
-    search_button.grid(column=1, row=1, sticky= tk.E)
+    search_button.grid(column=1, row=1, sticky=tk.E)
 
     def search():
         searched = search_field.get()
@@ -105,22 +94,20 @@ def create_frames(root):
 
     # Key listener addition.
     def on_press(key):
-        if key is keyboard.Key.enter:
+        if key is pynput.keyboard.Key.enter:
             search()
 
     def on_release(key):
         return
 
     search()
-    listener = keyboard.Listener(on_press=on_press, on_release=on_release)
+    listener = pynput.keyboard.Listener(on_press=on_press, on_release=on_release)
     listener.start()
 
 
 class Window(tk.Tk):
     def __init__(self):
         logging.info("Starting splash screen.")
-        # TODO  Shows splash screen? Not sure :(
-        splash_screen
         super().__init__()
 
         path = Path(os.getcwd())
