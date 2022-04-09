@@ -15,6 +15,7 @@ from main.utils.search import Search
 
 def update_gym_notebook(frame, nearby_gyms):
     notebook = Notebook(frame)
+    print("Giovanni was here!")
 
     if nearby_gyms:
         for gym in nearby_gyms:
