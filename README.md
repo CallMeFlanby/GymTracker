@@ -1,9 +1,8 @@
-###Archived project
-
 # GymTracker
 School project for the subject "Lernfeld 8 - Daten systemübergreifend bereitstellen", traineeship IT-Specialist.
 If you have any copyright issues, please do not hesitate to contact us.
 Please do not complain about the quality of this project, this is a an example.
+This project was archived on the 5th Mai 2022.
 
 # Logo
 ![alt text](https://github.com/CallMeFlanby/GymTracker/blob/main/documentation/GymTracker%20logo.png?raw=true)
